@@ -1,10 +1,14 @@
 ﻿[
   {
-    "name": "english",
-    "age": "20"
+    "services": "home",
+    "portofolio": "Overview",
+    "header_button": "Be a part !",
+    "services_title": "AN OPEN LETTER..."
   },
   {
-    "name": "french",
-    "age": "20"
+    "services": "acceuil",
+    "portofolio": "Presentation",
+    "header_button": "Rejoignez-nous !",
+    "services_title": "Une lettre ouverte..."
   }
 ]
