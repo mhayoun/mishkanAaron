@@ -672,10 +672,10 @@
         var my;
         function display() {
             if ($('#toggle-event').prop('checked')) i = 0; else i=1;
-            $('#Services').html(window.my[i].services);
-            $('#Portfolio').html(window.my[i].portofolio);
-            $('#header_button').html(window.my[i].header_button);
-            $('#services_title').html(window.my[i].services_title);
+            $('#Services').html(window.my.lg[i].services);
+            $('#Portfolio').html(window.my.lg[i].portofolio);
+            $('#header_button').html(window.my.lg[i].header_button);
+            $('#services_title').html(window.my.lg[i].services_title);
         }
 
         function init() {
@@ -690,9 +690,9 @@
             loadJSON(function (response) {
                 // Parse JSON string into object
                 my = JSON.parse(response);
-                console.log("JSON Data received, name is " + my[1].services);
-                console.log("JSON Data received, name is " + my[1].portofolio);
-                console.log("JSON Data received, name is " + my[1].services_title);
+                console.log("JSON Data received, name is " + my.lg[1].services);
+                //console.log("JSON Data received, name is " + my[1].portofolio);
+                //console.log("JSON Data received, name is " + my[1].services_title);
                 display();
             });
         }
