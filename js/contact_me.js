@@ -19,16 +19,42 @@ $(function() {
       }
       $this = $("#sendMessageButton");
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+
+      var $fn = firstName;
+      var $ln = '';
+      var $ad = '';
+      var $em = email;
+      var $ph = phone;
+      var $or = message;
+
+      var $bizId = '80513';
+      var $tmpUn = '11111';
+      var $SelLg = 'en';
+
+      var $mydata = '{' +
+          '"bizId":"' + $bizId + '"' + ',' +
+          '"tmpUn":"' + $tmpUn + '"' + ',' +
+          '"SelLg":"' + $SelLg + '"' + ',' +
+          '"fn":"' + $fn + '"' + ',' +
+          '"ln":"' + $ln + '"' + ',' +
+          '"ad":"' + $ad + '"' + ',' +
+          '"em":"' + $em + '"' + ',' +
+          '"ph":"' + $ph + '"' + ',' +
+          '"or":"' + $or + '"' +
+          '}';
+
+       alert('$tmpUn=' + $tmpUn + ' $bizId=' + $bizId +
+             '$fn='+ $fn + '$ln='+ $ln + '$ad='+ $ad +
+             '$em=' + $em + '$ph=' + $ph + '$or=' + $or +
+             '$$mydata='+$mydata);
+
+
       $.ajax({
-        url: "././mail/contact_me.php",
+        url: "/admin/Service2.svc/SendEmail",
         type: "POST",
-        data: {
-          name: name,
-          phone: phone,
-          email: email,
-          message: message
-        },
-        cache: false,
+        data: $mydata,
+        contentType: "application/json; charset=utf-8",
+        dataType:"json",
         success: function() {
           // Success message
           $('#success').html("<div class='alert alert-success'>");

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,10 +8,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Agency - Start Bootstrap Theme</title>
+  <title>Mishkan Aaron</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap toogle CSS -->
+    <link href="vendor/bootstrap/css/bootstrap4-toggle.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,15 +24,17 @@
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
+  
+  <script type="text/javascript" src="js/JavaScript.js"></script>
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="init()">  <!---->
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Mishkan Aaron </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -38,22 +42,26 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            <a id="Services" class="nav-link js-scroll-trigger" href="#services">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            <a id="Portfolio" class="nav-link js-scroll-trigger" href="#portfolio">Overview</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            <a id="Team" class="nav-link js-scroll-trigger" href="#team">Team</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
         </ul>
       </div>
+
+        <input id="toggle-event"  type="checkbox" 
+               checked data-toggle="toggle"
+                data-on="English" data-off="French" data-size="xs" >
     </div>
   </nav>
 
@@ -61,9 +69,10 @@
   <header class="masthead">
     <div class="container">
       <div class="intro-text">
-        <div class="intro-lead-in">Welcome To Our Studio!</div>
-        <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+        <div class="intro-lead-in"></div>
+        <div class="intro-heading text-uppercase"></div>
+        <a id="header_button" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" 
+           style="color:black" href="#services">Be a part !</a>
       </div>
     </div>
   </header>
@@ -73,34 +82,34 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Services</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 id="services_title" class="section-heading text-uppercase">An open letter...</h2>
+          <h3 class="section-subheading text-muted">How can one reconcile work and Torah study?</h3>
         </div>
       </div>
       <div class="row text-center">
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+            <i class="fas  fa-hourglass-half fa-stack-1x fa-inverse"></i>
           </span>
-          <h4 class="service-heading">E-Commerce</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 class="service-heading">Parnassa & Torah</h4>
+          <p class="text-muted">For the first time in the Torah world, a Kollel is organized to function part-time...</p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+            <i class="fas fa-cogs fa-stack-1x fa-inverse"></i>
           </span>
-          <h4 class="service-heading">Responsive Design</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 class="service-heading">Strength</h4>
+          <p class="text-muted">It is an incredible incubator within which the former provide the later with a dynamic. The encounter between the two worlds generates a great emulation in limud (Torah study).</p>
         </div>
         <div class="col-md-4">
           <span class="fa-stack fa-4x">
             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+            <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
           </span>
-          <h4 class="service-heading">Web Security</h4>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+          <h4 class="service-heading">Urgency</h4>
+          <p class="text-muted">Many from the Torah world need to leave the Kollelim for financial reasons and return to the working world.</p>
         </div>
       </div>
     </div>
@@ -126,8 +135,8 @@
             <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Threads</h4>
-            <p class="text-muted">Illustration</p>
+            <h4>Why did you join Mishkan Aaron's core?</h4>
+            <p class="text-muted">by Menachem M.</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -140,8 +149,8 @@
             <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Explore</h4>
-            <p class="text-muted">Graphic Design</p>
+            <h4>Why did you chose to study part-time? </h4>
+            <p class="text-muted">by Akiva M.</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -154,8 +163,8 @@
             <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Finish</h4>
-            <p class="text-muted">Identity</p>
+            <h4>What are you looking for?</h4>
+            <p class="text-muted">by Michael H.</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -290,87 +299,36 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading text-uppercase">A KOLLEL WITH A HISTORY...</h2>
+          <h3 class="section-subheading text-muted">Created in 2010 in the heart of Jerusalem...</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4">
           <div class="team-member">
             <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-            <h4>Kay Garland</h4>
-            <p class="text-muted">Lead Designer</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
+            <h4>Rav Tuvia GOLDSCHMIDT</h4>
+            <p class="text-muted">Rosh Kollel</p>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="team-member">
             <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-            <h4>Larry Parker</h4>
-            <p class="text-muted">Lead Marketer</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
+            <h4>Rav Baruch YAACOVSON</h4>
+            <p class="text-muted">Rav Meshiv</p>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="team-member">
             <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-            <h4>Diana Pertersen</h4>
-            <p class="text-muted">Lead Developer</p>
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
+            <h4>Rav Benchetrit</h4>
+            <p class="text-muted">Our Supporter</p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
-          <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+          <p id="team_desc" class="large text-muted"></p>
         </div>
       </div>
     </div>
@@ -505,10 +463,10 @@
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                 <!-- Project Details Go Here -->
-                <h2 class="text-uppercase">Project Name</h2>
-                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                <h2 class="text-uppercase">Menachem M</h2>
+                <p class="item-intro text-muted">Why did you join Mishkan Aaron's core?</p>
                 <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p> I was studying Torah full-time and I was looking for a structured, in-depth training in Halacha and that was validated by recognized examinations. It fit all my criteria.</p>
                 <ul class="list-inline">
                   <li>Date: January 2017</li>
                   <li>Client: Threads</li>
@@ -539,10 +497,10 @@
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                 <!-- Project Details Go Here -->
-                <h2 class="text-uppercase">Project Name</h2>
-                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                <h2 class="text-uppercase">Akiva M.</h2>
+                <p class="item-intro text-muted">Why did you chose to study part-time? What was your journey?</p>
                 <img class="img-fluid d-block mx-auto" src="img/portfolio/02-full.jpg" alt="">
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>I took the end of high-school baccalaureate exams in France and then went on to a Masters in Finance. I then had the opportunity to go work in New York. After my teshuva and Aliyah, I decided to split my occupations in two: in the morning serious studying within a framework and in the afternoon giving math classes.</p>
                 <ul class="list-inline">
                   <li>Date: January 2017</li>
                   <li>Client: Explore</li>
@@ -573,10 +531,10 @@
             <div class="col-lg-8 mx-auto">
               <div class="modal-body">
                 <!-- Project Details Go Here -->
-                <h2 class="text-uppercase">Project Name</h2>
-                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                <h2 class="text-uppercase">Michael H.</h2>
+                <p class="item-intro text-muted">What are you looking for?</p>
                 <img class="img-fluid d-block mx-auto" src="img/portfolio/03-full.jpg" alt="">
-                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                <p>firstly, to live in Eretz Yisroel, my Torah ideal. And then, this group who study without interruption who are always talked about, I want to stand alongside them and to get to know them. Well in fact, I've achieved this.</p>
                 <ul class="list-inline">
                   <li>Date: January 2017</li>
                   <li>Client: Finish</li>
@@ -698,6 +656,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap4-toggle.min.js"></script>
 
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -708,6 +667,46 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/agency.min.js"></script>
+
+    <script>
+        var my;
+        function display() {
+            if ($('#toggle-event').prop('checked')) i = 0; else i=1;
+            $('#Services').html(window.my.lg[i].services);
+            $('#Portfolio').html(window.my.lg[i].portofolio);
+            $('#header_button').html(window.my.lg[i].header_button);
+            $('#services_title').html(window.my.lg[i].services_title);
+        }
+
+        function init() {
+
+            //$.getJSON("data.json", function (json) {
+            //    my = json;
+            //    console.log("JSON Data received, name is " + my[1].services);
+            //    console.log("JSON Data received, name is " + my[1].portofolio);
+            //    console.log("JSON Data received, name is " + my[1].services_title);
+            //});
+
+            loadJSON(function (response) {
+                // Parse JSON string into object
+                my = JSON.parse(response);
+                console.log("JSON Data received, name is " + my.lg[1].services);
+                //console.log("JSON Data received, name is " + my[1].portofolio);
+                //console.log("JSON Data received, name is " + my[1].services_title);
+                display();
+            });
+        }
+
+        $(function () {
+            $('#toggle-event').change(function (json) {
+                display();
+            })
+        })
+
+
+
+       
+    </script>
 
 </body>
 

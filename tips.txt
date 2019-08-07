@@ -1,0 +1,21 @@
+//var mydata = JSON.parse(data);
+
+//var mydata = require('./data.json'); //with path
+
+//$.getJSON("data.json", function (json) {
+//    console.log("JSON Data received, name is " + json[0].name);
+//});
+
+
+//data = '[{"name" : "Home", "age" : "20"},{"name" : "Acceuil", "age" : "20"}]';
+
+ //var YES = true;
+        //if (YES) {
+        //    document.getElementById("Services").innerHTML = "Home";
+        //    document.getElementById("team_desc").innerHTML = "thanks to the spiritual support of Rav Azriel AUERBACH Shlita, Rabbi of Shanish Hayeshivot, the kollel is led by the Rosh Kollel, Rav Tuvia GOLDSCHMIDT, student of the biggest Israeli Yeshivos, including PONOVITCH in Bnei Brak and OHR YISROEL in Petach Tikva; and by the Rav Meshiv, Rav Baruch YAACOVSON, originally from the USA, a former student in the prestigious YESHIVOS MIR and ATERES YISROEL in Jerusalem.This model has already existed for the last 5 years, with 22 people (avreichim, balei batim) and its two rabbonim";
+        //}
+        //else {
+        //    document.getElementById("Services").innerHTML = "Acceuil";
+        //}
+		
+		
