@@ -1,17 +1,14 @@
-﻿{
-  "lg":
-  [
-    {
-      "services": "home",
-      "portofolio": "Overview",
-      "header_button": "Be a part !",
-      "services_title": "AN OPEN LETTER..."
-    },
-    {
-      "services": "acceuil",
-      "portofolio": "Presentation",
-      "header_button": "Rejoignez-nous !",
-      "services_title": "Une lettre ouverte..."
-    }
-  ]
-}
+﻿[
+  {
+    "services": "home",
+    "portofolio": "Overview",
+    "header_button": "Be a part !",
+    "services_title": "AN OPEN LETTER..."
+  },
+  {
+    "services": "acceuil",
+    "portofolio": "Presentation",
+    "header_button": "Rejoignez-nous !",
+    "services_title": "Une lettre ouverte..."
+  }
+]

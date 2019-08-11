@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,24 +6,62 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
+    <script type="text/javascript" src="js/JavaScript.js"></script>
 </head>
+
 <body>
+    
+    
 
 <script type="text/javascript">
-    $(document).ready(function($)
-    {
+
+$(document).ready(function($)
+{
+    var ajax_arr = [];
+    var data;
+    function saveToFile() {
+        console.log("SAVE NOW...data[0].services is " + data[0].services);
+        jsonString = JSON.stringify(data);
+        $.ajax({
+            url: "././mail/save_json.php",
+            data: { 'jsonString': jsonString },
+            type: 'POST'
+        });
+    }
+ 
+    loadJSON(function (response) {
+        // Parse JSON string into object
+        data = JSON.parse(response);
+        console.log("edit_json.html...data[0].services=" + data[0].services);
+        var obj0 = data[0];
+        var obj1 = data[1];
+        Object.keys(obj0).forEach(function (key) {
+            console.log('key:' + key + ' ' + obj0[key] + ',' + obj1[key]);
+            var obj = {
+                'fname': key,
+                'lname': obj0[key],
+                'email': obj1[key]
+            };
+            ajax_arr.push(obj);
+        });
+
+        // display ajax_arr...
+        for (var i = 0; i < ajax_arr.length; i++) {
+            var obj = ajax_arr[i];
+            for (var key in obj){
+                console.log("i=" + i.toString() + " key=" + key + " value=" + obj[key]);
+            }
+        }
+
         //ajax row data
-        var ajax_data =
-            [
-                {fname:"Code", lname:"With Mark", email:"mark@codewithmark.com"},
-                {fname:"Mary", lname:"Moe", email:"mary@gmail.com"},
-                {fname:"John", lname:"Doe", email:"john@yahoo.com"},
-                {fname:"Julie", lname:"Dooley", email:"julie@gmail.com"},
-            ]
-
-
-
+        //var ajax_arr =
+        //    [
+        //        { fname: "Code", lname: "With Mark", email: "mark@codewithmark.com" },
+        //        { fname: "Mary", lname: "Moe", email: "mary@gmail.com" },
+        //        { fname: "John", lname: "Doe", email: "john@yahoo.com" },
+        //        { fname: "Julie", lname: "Dooley", email: "julie@gmail.com" },
+        //    ];
+        
         var random_id = function  ()
         {
             var id_num = Math.random().toString(9).substr(2,3);
@@ -31,11 +69,12 @@
 
             return id_num + id_str;
         }
-
-
+        
         //--->create data table > start
         var tbl = '';
-        tbl +='<table class="table table-hover">'
+        //tbl += '<button onclick=""saveToFile()"">Save</button>';
+
+        tbl += '<table class="table table-hover">';
 
         //--->create table header > start
         tbl +='<thead>';
@@ -53,7 +92,7 @@
         tbl +='<tbody>';
 
         //--->create table body rows > start
-        $.each(ajax_data, function(index, val)
+        $.each(ajax_arr, function(index, val)
         {
             //you can replace with your database row id
             var row_id = random_id();
@@ -104,10 +143,23 @@
                 return false;
             }
 
-            //make div editable
-            $(this).closest('div').attr('contenteditable', 'true');
-            //add bg css
-            $(this).addClass('bg-warning').css('padding','5px');
+            //// all row editable
+            ////make div editable
+            //$(this).closest('div').attr('contenteditable', 'true');
+            ////add bg css
+            //$(this).addClass('bg-warning').css('padding','5px');
+
+            // only second and third cell editable  
+            var tbl_row = $(this).closest('tr');
+            tbl_row.find('.row_data').each(function (index, val) {
+                if (index > 0) {
+                    //this will help in case user decided to click on cancel button
+                    $(this)
+                        .attr('contenteditable', 'true')
+                        //.addClass('bg-warning')
+                        //.css('padding', '3px')
+                }
+            });
 
             $(this).focus();
         })
@@ -117,6 +169,8 @@
         //--->save single field data > start
         $(document).on('focusout', '.row_data', function(event)
         {
+            console.log('focusout...');
+
             event.preventDefault();
 
             if($(this).attr('edit_type') == 'button')
@@ -140,8 +194,67 @@
             $.extend(arr, {row_id:row_id});
 
             //out put to show
-            $('.post_msg').html( '<pre class="bg-success">'+JSON.stringify(arr, null, 2) +'</pre>');
+            $('.post_msg').html('<pre class="bg-success">' + JSON.stringify(arr, null, 2) + '</pre>');
 
+            var tbl_row = $(this).closest('tr');
+            var cells = {};
+            tbl_row.find('.row_data').each(function (index, val) {
+                var col_name = $(this).attr('col_name');
+                var col_val = $(this).html();
+                cells[col_name] = col_val;
+                console.log('cells[' + col_name + ']=' + col_val);
+            });
+
+            for (var key in cells)
+                console.log('key=' + key + ' value=' + cells[key])
+
+            // replace ajax_arr...
+            //for (var i = 0; i < ajax_arr.length; i++) {
+            //    var obj = ajax_arr[i];
+            //    var found = false;
+            //    for (var key in obj) {
+            //        console.log("i=" + i.toString() + " key=" + key + " value=" + obj[key]);
+            //        if (key == 'fname' && obj[key] == cells['fname']) {
+            //            if (obj['lname'] != cells['lname'] || obj['email'] != cells['email']){
+            //                console.log("MODIF !!!!");
+            //                ajax_arr.splice(i, 1, cells);
+            //            }
+            //            found = true;
+            //            break;
+            //        }
+            //    }
+            //    if (found) break;
+            //}
+
+            // replace data...
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+                var found = false;
+                var new_obj = new Object();
+                for (var key in obj) {
+                    console.log("data i=" + i.toString() + " key=" + key + " value=" + obj[key]);
+                    if (i == 0 && key == cells['fname'] && cells['lname'] != obj[key]) {
+                        console.log("FOUND !!!");
+                        new_obj[key] = cells['lname'];
+                        found = true;
+                    }
+                    else {
+                        new_obj[key] = obj[key];
+                    }
+                }
+                if (found) {
+                    data.splice(i, 1, new_obj);
+                    break;
+                }
+            }
+
+            // display ajax_arr...
+            //for (var i = 0; i < ajax_arr.length; i++) {
+            //    var obj = ajax_arr[i];
+            //    for (var key in obj) {
+            //        console.log("i=" + i.toString() + " key=" + key + " value=" + obj[key]);
+            //    }
+            //}
         })
         //--->save single field data > end
 
@@ -161,11 +274,24 @@
             tbl_row.find('.btn_edit').hide();
 
             //make the whole row editable
-            tbl_row.find('.row_data')
-                .attr('contenteditable', 'true')
-                .attr('edit_type', 'button')
-                .addClass('bg-warning')
-                .css('padding','3px')
+            //tbl_row.find('.row_data')
+            //    .attr('contenteditable', 'true')
+            //    .attr('edit_type', 'button')
+            //    .addClass('bg-warning')
+            //    .css('padding','3px')
+
+            tbl_row.find('.row_data').each(function(index, val)
+            {
+                // only second and third cell editable
+                if (index > 0) {
+                    //this will help in case user decided to click on cancel button
+                    $(this)
+                        .attr('contenteditable', 'true')
+                        .attr('edit_type', 'button')
+                        .addClass('bg-warning')
+                        .css('padding', '3px')
+                }
+            });
 
             //--->add the original entry > start
             tbl_row.find('.row_data').each(function(index, val)
@@ -239,6 +365,7 @@
                 var col_name = $(this).attr('col_name');
                 var col_val  =  $(this).html();
                 arr[col_name] = col_val;
+                console.log('col_name=' + col_name + ' col_val=' + col_val);
             });
             //--->get row data > end
 
@@ -248,19 +375,20 @@
             //out put to show
             $('.post_msg').html( '<pre class="bg-success">'+JSON.stringify(arr, null, 2) +'</pre>')
 
-
+            saveToFile();
         });
         //--->save whole row entery > end
-
-
     });
+});
 </script>
 
 
 
 <div class="panel panel-default">
-    <div class="panel-heading"><b> Demo </b> </div>
-
+    <div class="panel-heading"><b> Demo </b>
+        <!--<button onclick="saveToFile()">Save</button>-->
+    </div>
+    
     <div class="panel-body">
 
         <div class="tbl_user_data"></div>
@@ -281,6 +409,8 @@
 
     </div>
 </div>
+
+    
 
 </body>
 </html>
